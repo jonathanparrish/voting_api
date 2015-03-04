@@ -1,9 +1,13 @@
 class Api::V1::VotersController < ApplicationController
 
   protect_from_forgery with: :null_session
+  def index
+    render json: Voter.all
+
+  end
 
   def create
-    @voter = Voter.new(voter_params)
+    @voter = Voter.new
 
     if @voter.save
       render json: @voter
